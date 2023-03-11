@@ -1,6 +1,8 @@
 # Language support configuration.
 # See the languages documentation: https://docs.helix-editor.com/master/languages.html
-
+#---
+#rust
+#---
 [[language]]
 name = "rust"
 scope = "source.rust"
@@ -26,6 +28,7 @@ inlayHints.closureReturnTypeHints.enable = "with_block"
 inlayHints.discriminantHints.enable = "fieldless"
 inlayHints.lifetimeElisionHints.enable = "skip_trivial"
 inlayHints.typeHints.hideClosureInitialization = false
+checkOnSave = { command = "clippy" }
 
 [language.debugger]
 name = "lldb-vscode"
@@ -59,20 +62,6 @@ args = { attachCommands = [ "platform select remote-gdb-server", "platform conne
 [[grammar]]
 name = "rust"
 source = { git = "https://github.com/tree-sitter/tree-sitter-rust", rev = "0431a2c60828731f27491ee9fdefe25e250ce9c9" }
-
-[[language]]
-name = "sway"
-scope = "source.sway"
-injection-regex = "sway"
-file-types = ["sw"]
-language-server = { command = "forc", args = ["lsp"] }
-roots = ["Forc.toml", "Forc.lock"]
-indent = { tab-width = 4, unit = "    " }
-comment-token = "//"
-
-[[grammar]]
-name = "sway"
-source = { git = "https://github.com/FuelLabs/tree-sitter-sway", rev = "e491a005ee1d310f4c138bf215afd44cfebf959c" }
 
 [[language]]
 name = "toml"
